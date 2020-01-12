@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-ene-2020 20:16:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Articulospro" table="ARTICULOSPRO" schema="dbo" catalog="KATESHDMADE" optimistic-lock="version">
+        <id name="idarticulo" type="int">
+            <column name="IDARTICULO" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="categoriapro" class="pojos.Categoriapro" fetch="select">
+            <column name="IDCATEGORIA" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="50" />
+        </property>
+        <property name="precio" type="java.lang.Integer">
+            <column name="PRECIO" />
+        </property>
+        <property name="materials" type="string">
+            <column name="MATERIALS" length="50" />
+        </property>
+        <property name="dimensions" type="string">
+            <column name="DIMENSIONS" length="200" />
+        </property>
+        <property name="text" type="string">
+            <column name="TEXT" length="2000" />
+        </property>
+        <property name="foto1" type="string">
+            <column name="FOTO1" length="30" />
+        </property>
+        <property name="foto2" type="string">
+            <column name="FOTO2" length="30" />
+        </property>
+        <property name="foto3" type="string">
+            <column name="FOTO3" length="30" />
+        </property>
+        <property name="foto4" type="string">
+            <column name="FOTO4" length="30" />
+        </property>
+        <property name="foto5" type="string">
+            <column name="FOTO5" length="30" />
+        </property>
+        <property name="pass" type="string">
+            <column name="PASS" length="10" />
+        </property>
+        <set name="parampros" cascade="delete" table="PARAMPRO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDARTICULO" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Parampro" />
+        </set>
+        <set name="pedidospros" cascade="delete" table="PEDIDOSPRO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDARTICULO" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Pedidospro" />
+        </set>
+        <set name="wishlistpros" cascade="delete" table="WISHLISTPRO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDARTICULO" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Wishlistpro" />
+        </set>
+        <set name="carritopros" cascade="delete" table="CARRITOPRO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDARTICULO" />
+            </key>
+            <one-to-many class="pojos.Carritopro" />
+        </set>
+        <set name="reviewpros" cascade="delete" table="REVIEWPRO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDARTICULO" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Reviewpro" />
+        </set>
+    </class>
+</hibernate-mapping>

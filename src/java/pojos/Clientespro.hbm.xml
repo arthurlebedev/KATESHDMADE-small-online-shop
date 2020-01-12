@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-ene-2020 20:16:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Clientespro" table="CLIENTESPRO" schema="dbo" catalog="KATESHDMADE" optimistic-lock="version">
+        <id name="idcliente" type="int">
+            <column name="IDCLIENTE" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="40" />
+        </property>
+        <property name="dni" type="string">
+            <column name="DNI" length="10" unique="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="DIRECCION" length="100" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="TELEFONO" length="15" />
+        </property>
+        <property name="correo" type="string">
+            <column name="CORREO" length="40" />
+        </property>
+        <property name="password" type="string">
+            <column name="PASSWORD" length="50" />
+        </property>
+        <property name="admin" type="string">
+            <column name="ADMIN" length="10" />
+        </property>
+        <set name="comprapros" cascade="delete" table="COMPRAPRO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCLIENTE" />
+            </key>
+            <one-to-many class="pojos.Comprapro" />
+        </set>
+        <set name="wishlistpros" cascade="delete" table="WISHLISTPRO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCLIENTE" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Wishlistpro" />
+        </set>
+        <set name="carritopros" cascade="delete" table="CARRITOPRO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCLIENTE" />
+            </key>
+            <one-to-many class="pojos.Carritopro" />
+        </set>
+        <set name="reviewpros" cascade="delete" table="REVIEWPRO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCLIENTE" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Reviewpro" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-ene-2020 20:16:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Comprapro" table="COMPRAPRO" schema="dbo" catalog="KATESHDMADE" optimistic-lock="version">
+        <id name="idcompra" type="int">
+            <column name="IDCOMPRA" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="clientespro" class="pojos.Clientespro" fetch="select">
+            <column name="IDCLIENTE" />
+        </many-to-one>
+        <property name="fechacompra" type="date">
+            <column name="FECHACOMPRA" length="10" />
+        </property>
+        <property name="preciototal" type="java.lang.Integer">
+            <column name="PRECIOTOTAL" />
+        </property>
+        <property name="text" type="string">
+            <column name="TEXT" length="500" />
+        </property>
+        <property name="modopago" type="string">
+            <column name="MODOPAGO" length="30" />
+        </property>
+        <property name="fechaenvio" type="string">
+            <column name="FECHAENVIO" length="40" />
+        </property>
+        <set name="pedidospros" cascade="delete" table="PEDIDOSPRO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCOMPRA" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Pedidospro" />
+        </set>
+    </class>
+</hibernate-mapping>

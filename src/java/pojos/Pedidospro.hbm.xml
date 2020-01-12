@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-ene-2020 20:16:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Pedidospro" table="PEDIDOSPRO" schema="dbo" catalog="KATESHDMADE" optimistic-lock="version">
+        <composite-id name="id" class="pojos.PedidosproId">
+            <key-property name="idcompra" type="int">
+                <column name="IDCOMPRA" />
+            </key-property>
+            <key-property name="idarticulo" type="int">
+                <column name="IDARTICULO" />
+            </key-property>
+            <key-property name="add1" type="string">
+                <column name="ADD1" length="50" />
+            </key-property>
+            <key-property name="add2" type="string">
+                <column name="ADD2" length="50" />
+            </key-property>
+            <key-property name="add3" type="string">
+                <column name="ADD3" length="50" />
+            </key-property>
+            <key-property name="add4" type="string">
+                <column name="ADD4" length="50" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="articulospro" class="pojos.Articulospro" update="false" insert="false" fetch="select">
+            <column name="IDARTICULO" not-null="true" />
+        </many-to-one>
+        <many-to-one name="comprapro" class="pojos.Comprapro" update="false" insert="false" fetch="select">
+            <column name="IDCOMPRA" not-null="true" />
+        </many-to-one>
+        <property name="cantidad" type="java.lang.Integer">
+            <column name="CANTIDAD" />
+        </property>
+    </class>
+</hibernate-mapping>

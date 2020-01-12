@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+
+    <!--
+    Most controllers will use the ControllerClassNameHandlerMapping above, but
+    for the index controller we are using ParameterizableViewController, so we must
+    define an explicit mapping for it.
+    -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        
+    </bean> 
+    
+    <bean id="indexcontroller" class="controllers.IndexController"/>
+    <bean id="shopcontroller" class="controllers.ShopController"/>
+    <bean id="productcontroller" class="controllers.ProductController"/>
+    <bean id="accountcontroller" class="controllers.AccountController"/>
+    <bean id="logincontroller" class="controllers.LoginController"/>
+    <bean id="wishlistcontroller" class="controllers.WishlistController"/>
+    <bean id="cartcontroller" class="controllers.CartController"/>
+    <bean id="checkoutcontroller" class="controllers.CheckoutController"/>
+    <bean id="orderscontroller" class="controllers.OrdersController"/>
+    <bean id="usercontroller" class="controllers.UserController"/>
+    <bean id="insertcontroller" class="controllers.InsertController"/>
+    <bean id="artlistcontroller" class="controllers.ArtlistController"/>
+    <bean id="adminorderscontroller" class="controllers.AdminordersController"/>
+    <bean id="adminreviewcontroller" class="controllers.AdminreviewController"/>
+    <bean id="usersearchcontroller" class="controllers.UsersearchController"/>
+    
+    
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="index.htm">indexcontroller</prop>
+                <prop key="about.htm">aboutcontroller</prop>
+                <prop key="quick.htm">indexcontroller</prop>
+                <prop key="contact.htm">contactcontroller</prop>
+                <prop key="shop.htm">shopcontroller</prop>
+                <prop key="quickshop.htm">shopcontroller</prop>
+                <prop key="product.htm">productcontroller</prop>
+                <prop key="account.htm">accountcontroller</prop>
+                <prop key="login.htm">logincontroller</prop>
+                <prop key="wishlist.htm">wishlistcontroller</prop>
+                <prop key="cart.htm">cartcontroller</prop>
+                <prop key="checkout.htm">checkoutcontroller</prop>
+                <prop key="orders.htm">orderscontroller</prop>
+                <prop key="users.htm">usercontroller</prop>
+                <prop key="insert.htm">insertcontroller</prop>
+                <prop key="artlist.htm">artlistcontroller</prop>
+                <prop key="adminorders.htm">adminorderscontroller</prop>
+                <prop key="adminreview.htm">adminreviewcontroller</prop>
+                <prop key="usersearch.htm">usersearchcontroller</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+
+    <bean name="aboutcontroller"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="about" />
+    
+    <bean name="contactcontroller"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="contact" />
+    
+    
+    
+
+</beans>

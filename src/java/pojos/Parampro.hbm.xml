@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-ene-2020 20:16:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Parampro" table="PARAMPRO" schema="dbo" catalog="KATESHDMADE" optimistic-lock="version">
+        <composite-id name="id" class="pojos.ParamproId">
+            <key-property name="idarticulo" type="int">
+                <column name="IDARTICULO" />
+            </key-property>
+            <key-property name="paramName" type="string">
+                <column name="PARAM_NAME" length="40" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="articulospro" class="pojos.Articulospro" update="false" insert="false" fetch="select">
+            <column name="IDARTICULO" not-null="true" />
+        </many-to-one>
+        <property name="paramType" type="string">
+            <column name="PARAM_TYPE" length="20" />
+        </property>
+        <property name="param1" type="string">
+            <column name="PARAM1" length="30" />
+        </property>
+        <property name="param2" type="string">
+            <column name="PARAM2" length="30" />
+        </property>
+        <property name="param3" type="string">
+            <column name="PARAM3" length="30" />
+        </property>
+        <property name="param4" type="string">
+            <column name="PARAM4" length="30" />
+        </property>
+        <property name="param5" type="string">
+            <column name="PARAM5" length="30" />
+        </property>
+        <property name="param6" type="string">
+            <column name="PARAM6" length="30" />
+        </property>
+        <property name="param7" type="string">
+            <column name="PARAM7" length="30" />
+        </property>
+        <property name="param8" type="string">
+            <column name="PARAM8" length="30" />
+        </property>
+        <property name="param9" type="string">
+            <column name="PARAM9" length="30" />
+        </property>
+    </class>
+</hibernate-mapping>

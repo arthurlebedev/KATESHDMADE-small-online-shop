@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-ene-2020 20:16:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Carritopro" table="CARRITOPRO" schema="dbo" catalog="KATESHDMADE" optimistic-lock="version">
+        <id name="idcart" type="int">
+            <column name="IDCART" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="articulospro" class="pojos.Articulospro" fetch="select">
+            <column name="IDARTICULO" />
+        </many-to-one>
+        <many-to-one name="clientespro" class="pojos.Clientespro" fetch="select">
+            <column name="IDCLIENTE" />
+        </many-to-one>
+        <property name="foto1" type="string">
+            <column name="FOTO1" length="30" />
+        </property>
+        <property name="cantidad" type="java.lang.Integer">
+            <column name="CANTIDAD" />
+        </property>
+        <property name="add1" type="string">
+            <column name="ADD1" length="50" />
+        </property>
+        <property name="add2" type="string">
+            <column name="ADD2" length="50" />
+        </property>
+        <property name="add3" type="string">
+            <column name="ADD3" length="50" />
+        </property>
+        <property name="add4" type="string">
+            <column name="ADD4" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>
